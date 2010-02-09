@@ -186,7 +186,8 @@ var Canvas2Image = (function() {
 			if (bReturnImg) {
 				return makeImageObject(strData);
 			} else {
-				saveFile(strData.replace("image/png", strDownloadMime));
+//                saveFile(strData.replace("image/png", strDownloadMime));
+                saveFile(strData);
 			}
 			return true;
 		},
