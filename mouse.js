@@ -553,13 +553,8 @@ function CIG(destinationImageId){
     
     
     function saveCanvas(pCanvas, strType) {
-        var bRes = false;
-        if (strType == "PNG")
-        bRes = Canvas2Image.saveAsPNG(pCanvas);
-        if (!bRes) {
-            alert("Sorry, this browser is not capable of saving " + strType + " files!");
-            return false;
-        }
+        var strData = pCanvas.toDataURL("image/png");
+        document.location.href = strData;
     }
 
 
