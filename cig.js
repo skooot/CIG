@@ -19,6 +19,7 @@ function CIG(destinationImageId){
     var cBottomL = new oCorner();
     var cBottomR = new oCorner();
     var keepAspect = 'yes';
+    var bgColor = 'ff0000';
     
     function oCorner () {
     
@@ -169,6 +170,54 @@ function CIG(destinationImageId){
         }
         image.style.cursor = 'hand';
     }
+    
+    /*
+     * add set of backgrounds
+     */
+    this.addBackgroundsSet = function(id){
+        var images = document.getElementById(id).getElementsByTagName('img');
+        for(var x in images){
+            images[x].onclick = function(){
+                back.src = this.src;
+                updateIcon();
+            }
+            if(!isNaN(x))
+                images[x].style.cursor = 'hand';
+        } 
+    }
+    
+    /*
+     * add set of images
+     */
+    this.addImagesSet = function(id){
+        var images = document.getElementById(id).getElementsByTagName('img');
+        for(var x in images){
+            images[x].onclick = function(){
+                img.src = this.src;
+                obszarZaznaczenia.image.src = this.src;
+            }
+            if(!isNaN(x))
+                images[x].style.cursor = 'hand';
+        } 
+    }
+
+
+    /*
+     * change background color
+     */
+    this.changeBgColor = function(obj){
+        obj.onchange = function(){
+            bgColor = this.value;
+            back.src = 'bg11.png';
+            updateIcon();
+        }
+        obj.onclick = function(){
+            bgColor = this.value;
+            back.src = 'bg11.png';
+            updateIcon();
+        }
+    }
+
     
     /*
      * keep aspect ratio
@@ -336,6 +385,7 @@ function CIG(destinationImageId){
         img2.style.position = 'absolute';
         img2.style.left = '0px';
         img2.style.top = '0px';
+        img2.style.backgroundImage = "url('canvasbg.png')";
 
         this.image = img2;
         mainObject.appendChild(img2);
@@ -532,6 +582,8 @@ function CIG(destinationImageId){
     }, false);
     img.src = hashes;
     
+    var back = new Image();
+    back.src = 'background.png';
     
 
     
@@ -539,6 +591,13 @@ function CIG(destinationImageId){
     
     function updateIcon(){
         for(var x in icons){
+
+            icons[x].oCanvas.fillStyle = "#" + bgColor;
+            icons[x].oCanvas.fillRect (0, 0, icons[x].iconSize, icons[x].iconSize);
+            
+            
+            icons[x].oCanvas.drawImage(back, 0, 0, icons[x].iconSize,  icons[x].iconSize);
+
             icons[x].oCanvas.drawImage(img, cTopL.x, cTopL.y,  cTopR.x - cTopL.x,  cBottomL.y - cTopL.y,   0, 0, icons[x].iconSize,  icons[x].iconSize);
             
             icons[x].oCanvas.drawImage(gloss_small, 0, 0, icons[x].iconSize, icons[x].iconSize);

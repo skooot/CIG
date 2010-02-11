@@ -1,40 +1,57 @@
     body {
         font-family: arial;
     }
+    #content {
+        margin: auto;
+        width: 800px;
+        position: relative;
+        height: 550px;
+    }
     #picture {
         position: relative;
         left: 0px;
-        top: 50px;
+        top: 0px;
     }
 
     #icon1 {
-        position: fixed;
-        top: 5px;
-        right: 5px;
+        position: absolute;
+        top: 0px;
+        right: 152px;
     }
     #icon2 {
-        position: fixed;
-        top: 5px;
-        right: 140px;
+        position: absolute;
+        top: 64px;
+        right: 80px;
     }
     #icon3 {
-        position: fixed;
-        top: 140px;
-        right: 5px;
+        position: absolute;
+        top: 96px;
+        right: 39px;
     }
     #icon4 {
-        position: fixed;
-        top: 77px;
-        right: 140px;
-    }
-    #mini {
-        position: fixed;
-        top: 200px;
-        right: 5px;
-        width: 50px;
-        text-align: right;
+        position: absolute;
+        top: 96px;
+        right: 0px;
     }
     canvas {
         background-image: url('canvasbg.png');
         border: 1px dashed white;
+    }
+    #backgrounds img {
+        height: 30px;
+        border: 1px solid black;
+    }
+
+    #images img {
+        height: 30px;
+        border: 1px solid black;
+    }
+    #menu {
+        position: absolute;
+        right: 0px;
+        top: 140px;
+        width: 280px;
+    }
+    #menu div {
+        margin-bottom: 15px;
     }
